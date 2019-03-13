@@ -1,0 +1,36 @@
+{
+  "connection": "default",
+  "collectionName": "items",
+  "info": {
+    "name": "item",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "label": {
+      "default": "",
+      "type": "string"
+    },
+    "tags": {
+      "default": "",
+      "type": "string"
+    },
+    "fields": {
+      "default": "",
+      "type": "json"
+    },
+    "fromCollection": {
+      "model": "collection"
+    },
+    "photos": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "collections",
+  "info": {
+    "name": "collection",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "label": {
+      "default": "",
+      "type": "string"
+    },
+    "template": {
+      "default": "",
+      "type": "json"
+    },
+    "owner": {
+      "model": "user",
+      "plugin": "users-permissions"
+    }
+  }
+}
