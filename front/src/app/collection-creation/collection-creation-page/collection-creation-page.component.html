@@ -1,3 +1,11 @@
-<p>
-  collection-creation-page works!
-</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Label" formControlName="label"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Template" formControlName="template"></textarea>
+  </mat-form-field>
+
+  <button type="submit" mat-button>Save</button>
+</form>

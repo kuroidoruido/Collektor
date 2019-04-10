@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { CollectionsService, Collection } from 'src/app/services';
 
@@ -24,8 +24,7 @@ export class CollectionPageComponent implements OnInit {
             map(params => params.id),
             switchMap(collectionId =>
                 this.collectionService.getCollection(collectionId)
-            ),
-            tap(collection => console.log(collection))
+            )
         );
     }
 }
