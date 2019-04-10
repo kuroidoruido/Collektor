@@ -1,0 +1,11 @@
+<mat-card *ngFor="let c of (collections$ | async)">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon aria-hidden="true">collections</mat-icon>
+        </div>
+        <mat-card-title> {{ c.label }} </mat-card-title>
+    </mat-card-header>
+    <mat-card-actions align="end">
+        <button mat-button (click)="router.navigate(['collection', c.id])">SEE</button>
+    </mat-card-actions>
+</mat-card>

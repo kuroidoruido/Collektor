@@ -1,0 +1,46 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+        #drawer
+        class="sidenav"
+        fixedInViewport="true"
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="!(isHandset$ | async)"
+    >
+        <mat-toolbar *ngIf="showSideNav">{{
+            session.user.username
+        }}</mat-toolbar>
+        <mat-nav-list *ngIf="showSideNav">
+            <a mat-list-item href="#" (click)="logout()">Logout</a>
+            <span mat-list-item>&nbsp;</span>
+            <a
+                *ngFor="let c of (collections$ | async)"
+                mat-list-item
+                (click)="router.navigate(['collection', c.id])"
+            >
+                {{ c.label }}
+            </a>
+        </mat-nav-list>
+
+        <mat-nav-list class="bottom-list" *ngIf="showSideNav">
+            <a mat-list-item (click)="router.navigate(['collection', 'new'])">
+                Create Collection
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()"
+                *ngIf="showSideNav && (isHandset$ | async)"
+            >
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span>Collektor</span>
+        </mat-toolbar>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,23 @@
+<mat-card>
+<mat-card-header>
+    <mat-card-title>{{ item.label }}</mat-card-title>
+    <mat-card-subtitle
+        >Updated on
+        {{ item.updated_at | date: short }}</mat-card-subtitle
+    >
+</mat-card-header>
+<img
+    *ngIf="item.photos[0] as photo1"
+    mat-card-image
+    [src]="'/api/' + photo1.url"
+    [alt]="photo1.name"
+/>
+<mat-card-content>
+    <ul>
+        <li *ngFor="let f of (item.fields | keyvalue)">
+            {{ f.key + ' => ' + f.value }}
+        </li>
+        <li>Tags: {{item.tags.join(', ')}}</li>
+    </ul>
+</mat-card-content>
+</mat-card>

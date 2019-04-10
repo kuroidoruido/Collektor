@@ -1,0 +1,15 @@
+:host {
+  margin: 3em 1em;
+
+  .items-container {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+
+    app-item {
+      width: 30%;
+      min-width: 20em;
+      margin-bottom: 1em;
+    }
+  }
+}
