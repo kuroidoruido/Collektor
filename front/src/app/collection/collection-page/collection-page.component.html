@@ -6,6 +6,6 @@
             [item]="item"
         ></app-item>
     </div>
-    <fab (click)="router.navigate(['item', 'new'])">+</fab>
+    <fab (click)="router.navigate(['item', 'new', collection.id])">+</fab>
 </div>
 <ng-template #loading> Loading... </ng-template>

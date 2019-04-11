@@ -31,7 +31,7 @@ const routes: Routes = [
         component: CollectionPageComponent,
     },
     {
-        path: 'item/new',
+        path: 'item/new/:collectionId',
         canActivate: [EnsureLoginGuard],
         component: ItemCreationPageComponent,
         pathMatch: 'full',

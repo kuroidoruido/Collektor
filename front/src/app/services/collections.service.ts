@@ -146,4 +146,19 @@ export class CollectionsService {
             catchError(catchAuthErrorOnly)
         );
     }
+
+    createItem(item: Partial<Item>): Observable<boolean> {
+      return this.authService.getCurrentSession().pipe(
+          flatMap(authOrError),
+          flatMap(({ jwt }) =>
+              this.http.post(
+                  '/api/items',
+                  item,
+                  { headers: { Authorization: `Bearer ${jwt}` } }
+              )
+          ),
+          map(() => true),
+          catchError(catchAuthErrorOnly)
+      );
+    }
 }
