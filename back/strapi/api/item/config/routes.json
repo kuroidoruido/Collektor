@@ -5,7 +5,7 @@
       "path": "/items",
       "handler": "Item.find",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/items/count",
       "handler": "Item.count",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/items/:id",
       "handler": "Item.findOne",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/items",
       "handler": "Item.create",
       "config": {
-        "policies": []
+        "policies": ["setOwner"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/items/:id",
       "handler": "Item.update",
       "config": {
-        "policies": []
+        "policies": ["setOwner"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/items/:id",
       "handler": "Item.destroy",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     }
   ]
