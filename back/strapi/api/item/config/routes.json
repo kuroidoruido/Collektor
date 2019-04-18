@@ -29,9 +29,7 @@
       "path": "/items",
       "handler": "Item.create",
       "config": {
-        "policies": [
-          "onlyOwnerCanWrite"
-        ]
+        "policies": []
       }
     },
     {
@@ -39,9 +37,7 @@
       "path": "/items/:id",
       "handler": "Item.update",
       "config": {
-        "policies": [
-          "onlyOwnerCanWrite"
-        ]
+        "policies": []
       }
     },
     {
@@ -49,9 +45,7 @@
       "path": "/items/:id",
       "handler": "Item.destroy",
       "config": {
-        "policies": [
-          "onlyOwnerCanWrite"
-        ]
+        "policies": []
       }
     }
   ]

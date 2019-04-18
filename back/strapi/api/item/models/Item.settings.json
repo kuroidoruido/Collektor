@@ -31,6 +31,10 @@
       "via": "related",
       "plugin": "upload",
       "required": false
+    },
+    "owner": {
+      "model": "user",
+      "plugin": "users-permissions"
     }
   }
 }

@@ -5,7 +5,7 @@
       "path": "/collections",
       "handler": "Collection.find",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/collections/count",
       "handler": "Collection.count",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/collections/:id",
       "handler": "Collection.findOne",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/collections",
       "handler": "Collection.create",
       "config": {
-        "policies": []
+        "policies": ["setOwner"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/collections/:id",
       "handler": "Collection.update",
       "config": {
-        "policies": []
+        "policies": ["setOwner"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/collections/:id",
       "handler": "Collection.destroy",
       "config": {
-        "policies": []
+        "policies": ["isOwner"]
       }
     }
   ]
