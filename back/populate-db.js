@@ -1,4 +1,4 @@
-var { from, of, ReplaySubject, zip } = require("rxjs");
+var { AsyncSubject, from, of, zip } = require("rxjs");
 var { ajax } = require("rxjs/ajax");
 var { flatMap, map, tap } = require("rxjs/operators");
 var { XMLHttpRequest } = require("xmlhttprequest");
@@ -176,7 +176,7 @@ const users = [
   }
 ];
 
-const rootAuth$ = new ReplaySubject(1);
+const rootAuth$ = new AsyncSubject();
 const rootAuth = () => {
   ajax({
     createXHR,
