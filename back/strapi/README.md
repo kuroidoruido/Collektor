@@ -1,3 +1,3 @@
-# collektor-back
+# strapi
 
-A quick description of collektor-back.
+A quick description of strapi.

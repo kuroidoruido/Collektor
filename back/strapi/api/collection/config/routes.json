@@ -5,7 +5,7 @@
       "path": "/collections",
       "handler": "Collection.find",
       "config": {
-        "policies": ["isOwner"]
+        "policies": []
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/collections/count",
       "handler": "Collection.count",
       "config": {
-        "policies": ["isOwner"]
+        "policies": []
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/collections/:id",
       "handler": "Collection.findOne",
       "config": {
-        "policies": ["isOwner"]
+        "policies": []
       }
     },
     {
@@ -37,13 +37,13 @@
       "path": "/collections/:id",
       "handler": "Collection.update",
       "config": {
-        "policies": ["setOwner"]
+        "policies": ["isOwner"]
       }
     },
     {
       "method": "DELETE",
       "path": "/collections/:id",
-      "handler": "Collection.destroy",
+      "handler": "Collection.delete",
       "config": {
         "policies": ["isOwner"]
       }

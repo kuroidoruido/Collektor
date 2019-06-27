@@ -181,7 +181,7 @@ const rootAuth = () => {
   ajax({
     createXHR,
     method: "POST",
-    url: `${baseUrl}/auth/local`,
+    url: `${baseUrl}/admin/auth/local`,
     body: { identifier: "admin@local.com", password: "password" },
     crossDomain: true
   })
@@ -249,5 +249,5 @@ from(users)
   )
   .subscribe(
     () => console.log("finished"),
-    err => console.error("An error occured", err)
+    err => console.error("An error occurred", err)
   );

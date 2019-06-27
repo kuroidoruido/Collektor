@@ -12,7 +12,7 @@
   },
   "attributes": {
     "label": {
-      "default": "",
+      "required": true,
       "type": "string"
     },
     "tags": {
@@ -20,17 +20,16 @@
       "type": "string"
     },
     "fields": {
-      "default": "",
+      "required": true,
       "type": "json"
-    },
-    "fromCollection": {
-      "model": "collection"
     },
     "photos": {
       "collection": "file",
       "via": "related",
-      "plugin": "upload",
-      "required": false
+      "plugin": "upload"
+    },
+    "fromCollection": {
+      "model": "collection"
     },
     "owner": {
       "model": "user",

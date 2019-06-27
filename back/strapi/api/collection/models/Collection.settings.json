@@ -12,16 +12,16 @@
   },
   "attributes": {
     "label": {
-      "default": "",
+      "required": true,
       "type": "string"
-    },
-    "template": {
-      "default": "",
-      "type": "json"
     },
     "owner": {
       "model": "user",
       "plugin": "users-permissions"
+    },
+    "template": {
+      "required": true,
+      "type": "json"
     }
   }
 }
