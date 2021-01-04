@@ -1,0 +1,35 @@
+[
+  {
+    "id": "7a53bef2-01cd-4cd7-8981-50faabb44dd0",
+    "label": "Wonderswan games",
+    "customFields": [
+      {
+        "key": "game-id",
+        "label": "Game ID",
+        "type": "TEXT"
+      }
+    ]
+  },
+  {
+    "id": "b255c89a-02be-4e44-8b9b-8b682c4fb477",
+    "label": "Gameboy Color games",
+    "customFields": [
+      {
+        "key": "game-id",
+        "label": "Game ID",
+        "type": "TEXT"
+      }
+    ]
+  },
+  {
+    "id": "af06bcae-95ed-4d2c-81a6-98815c983eb3",
+    "label": "Switch games",
+    "customFields": [
+      {
+        "key": "game-id",
+        "label": "Game ID",
+        "type": "TEXT"
+      }
+    ]
+  }
+]

@@ -37,3 +37,11 @@ nb-configuration.xml
 
 # Local environment
 .env
+
+# Angular dist
+src/main/resources/META-INF/resources/*.ico
+src/main/resources/META-INF/resources/index.html
+src/main/resources/META-INF/resources/*.js
+src/main/resources/META-INF/resources/*.js.map
+src/main/resources/META-INF/resources/*.css
+src/main/resources/META-INF/resources/*.css.map

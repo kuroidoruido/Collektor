@@ -1,12 +1,10 @@
 package nf.fr.k49.collektor.model;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public record Collektion(
-    String id,
+public record CollektionItemField(
+    String key,
     String label,
-    List<CollektionItemField> customFields
-) {};
+    CollektionItemFieldType type
+) {}

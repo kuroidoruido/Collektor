@@ -1,0 +1,18 @@
+[
+  {
+    "id": "caa4d794-6f95-4a5f-a127-3cdd4667bb8a",
+    "label": "Gunpey",
+    "photoUrls": [],
+    "customFields": {
+      "game-id": "WS-XXX-01"
+    }
+  },
+  {
+    "id": "b690fb41-a41e-4396-96de-3e0b1d18c91e",
+    "label": "Panda",
+    "photoUrls": [],
+    "customFields": {
+      "game-id": "WS-XXX-02"
+    }
+  }
+]

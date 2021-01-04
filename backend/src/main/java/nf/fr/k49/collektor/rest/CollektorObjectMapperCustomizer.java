@@ -1,4 +1,4 @@
-package nf.fr.k49.collektor.resteasyjackson;
+package nf.fr.k49.collektor.rest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
