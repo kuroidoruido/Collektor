@@ -1,0 +1,15 @@
+<mat-card *ngIf="item" [attr.data-item-id]="item.id">
+    <mat-card-header>
+        <mat-card-title>{{ item.label }}</mat-card-title>
+    </mat-card-header>
+    <ng-template [ngIf]="item.photoUrls && item.photoUrls.length > 0" [ngIfElse]="noPhoto">
+        <img mat-card-image [src]="item.photoUrls[0]" alt="Photo 1">
+    </ng-template>
+    <ng-template #noPhoto>
+        <img mat-card-image src="assets/default-item.svg" alt="No image for this item">
+    </ng-template>
+    <mat-card-actions [align]="'end'">
+        <a mat-button [href]="'/collection/item/'+item.id">Edit</a>
+    </mat-card-actions>
+</mat-card>
+  

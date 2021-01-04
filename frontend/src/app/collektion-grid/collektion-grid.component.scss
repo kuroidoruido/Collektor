@@ -1,0 +1,5 @@
+@import 'shared/responsive-grid.mixin.scss';
+
+:host {
+    @include responsive-grid;
+}

@@ -12,4 +12,3 @@ public record CollektionItem(
     List<String> photoUrls,
     Map<String, Object> customFields
 ) {};
-

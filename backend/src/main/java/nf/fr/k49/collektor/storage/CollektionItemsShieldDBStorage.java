@@ -23,6 +23,7 @@ import nf.fr.k49.shielddb.gson.ShieldDBGson;
 @Singleton
 public class CollektionItemsShieldDBStorage implements CollektionItemsStorage {
     private static final String FILE_NAME_SUFFIX = ".json";
+    private static final String ITEM_DIR_NAME = "items";
 
     private AppConfig config;
     private Map<String, List<CollektionItem>> items;
@@ -34,7 +35,7 @@ public class CollektionItemsShieldDBStorage implements CollektionItemsStorage {
 
     private synchronized List<CollektionItem> getShieldDbInstance(String collectionId) throws IOException {
         if(!this.items.containsKey(collectionId)) {
-            var itemsJsonPath = Paths.get(config.baseDir, collectionId+FILE_NAME_SUFFIX).toAbsolutePath().toString();
+            var itemsJsonPath = Paths.get(config.baseDir, ITEM_DIR_NAME, collectionId+FILE_NAME_SUFFIX).toAbsolutePath().toString();
             Type type = GsonTypeUtils.getType();
 		    Gson gson = new GsonBuilder()
 				.setPrettyPrinting()

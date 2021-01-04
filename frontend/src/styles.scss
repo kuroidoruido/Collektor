@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+:root {
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+        --responsive-column-count: 1;
+    }
+    
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        --responsive-column-count: 2;
+    }
+    
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        --responsive-column-count: 3;
+    }
+    
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        --responsive-column-count: 4;
+    }
+    
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        --responsive-column-count: 5;
+    }
+    
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1900px) {
+        --responsive-column-count: 6;
+    }
+}

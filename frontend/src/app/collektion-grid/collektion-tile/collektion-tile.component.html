@@ -1,0 +1,10 @@
+<mat-card *ngIf="collektion" [attr.data-collektion-id]="collektion.id">
+    <mat-card-header>
+        <mat-card-title>{{ collektion.label }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="assets/default-collection.svg" alt="No image for this collection">
+    <mat-card-actions [align]="'end'">
+        <a mat-button [routerLink]="['/collection/', collektion.id]">Open</a>
+    </mat-card-actions>
+</mat-card>
+  

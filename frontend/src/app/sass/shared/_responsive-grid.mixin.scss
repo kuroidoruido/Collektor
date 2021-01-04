@@ -1,0 +1,7 @@
+@mixin responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--responsive-column-count), 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    padding: 3rem;
+}
