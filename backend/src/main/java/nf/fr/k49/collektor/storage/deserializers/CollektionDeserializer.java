@@ -20,6 +20,10 @@ public class CollektionDeserializer implements JsonListDeserializer<Collektion> 
         final JsonObject obj = json.getAsJsonObject();
         final String id = obj.get("id").getAsString();
         final String label = obj.get("label").getAsString();
+        String imgUrl = null;
+        if (!obj.get("imgUrl").isJsonNull()) {
+            imgUrl = obj.get("imgUrl").getAsString();
+        }
         final List<CollektionItemField> customFields = new ArrayList<CollektionItemField>();
         obj.get("customFields").getAsJsonArray().forEach(field -> {
             final JsonObject fieldObj = field.getAsJsonObject();
@@ -29,7 +33,7 @@ public class CollektionDeserializer implements JsonListDeserializer<Collektion> 
             final CollektionItemFieldType fieldType = stringToItemFieldType(fieldTypeStr);
             customFields.add(new CollektionItemField(fieldKey, fieldLabel, fieldType));
         });
-        return new Collektion(id, label, customFields);
+        return new Collektion(id, label, imgUrl, customFields);
     }
 
     private static CollektionItemFieldType stringToItemFieldType(String fieldTypeStr) {

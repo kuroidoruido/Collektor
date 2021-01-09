@@ -11,4 +11,8 @@ public record CollektionItem(
     String label,
     List<String> photoUrls,
     Map<String, Object> customFields
-) {};
+) {
+    public CollektionItem setId(String newId) {
+        return new CollektionItem(newId, this.label(), this.photoUrls(), this.customFields());
+    }
+};

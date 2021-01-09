@@ -1,6 +1,7 @@
 export interface Collektion {
     id: String;
     label: String;
+    imgUrl?: String;
     customFields: CollektionItemField[];
 }
 

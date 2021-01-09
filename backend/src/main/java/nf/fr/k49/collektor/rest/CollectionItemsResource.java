@@ -39,7 +39,7 @@ public class CollectionItemsResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Optional<CollektionItem> addOne(@PathParam String collectionId, CollektionItem one) {
-        var oneWithGeneratedId = new CollektionItem(UUID.randomUUID().toString(), one.label(), one.photoUrls(), one.customFields());
+        var oneWithGeneratedId = one.setId(UUID.randomUUID().toString());
         if (this.storage.getItems(collectionId).add(oneWithGeneratedId)) {
             return Optional.of(oneWithGeneratedId);
         } else {

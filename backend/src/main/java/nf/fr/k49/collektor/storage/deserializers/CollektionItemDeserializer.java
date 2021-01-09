@@ -1,7 +1,6 @@
 package nf.fr.k49.collektor.storage.deserializers;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public class CollektionItemDeserializer implements JsonListDeserializer<Collekti
         obj.get("photoUrls").getAsJsonArray().forEach(url -> {
             photoUrls.add(url.getAsString());
         });
-        final Map<String, Object> customFields = this.gson.fromJson(obj.get("customFields"), Map.class);// new HashMap<>();
+        final Map<String, Object> customFields = this.gson.fromJson(obj.get("customFields"), Map.class);
         return new CollektionItem(id, label, photoUrls, customFields);
     }
 

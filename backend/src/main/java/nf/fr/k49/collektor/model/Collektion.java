@@ -8,5 +8,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public record Collektion(
     String id,
     String label,
+    String imgUrl,
     List<CollektionItemField> customFields
-) {};
+) {
+    public Collektion setId(String newId) {
+        return new Collektion(newId, this.label(), this.imgUrl(), this.customFields());
+    }
+};
