@@ -16,6 +16,7 @@
     <quarkus-plugin.version>1.10.5.Final</quarkus-plugin.version>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+    <commons-io.version>2.8.0</commons-io.version>
     <shielddb.version>0.1.2-SNAPSHOT</shielddb.version>
   </properties>
   <dependencyManagement>
@@ -46,6 +47,15 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
     </dependency>
+    <dependency>
+        <groupId>org.jboss.resteasy</groupId>
+        <artifactId>resteasy-multipart-provider</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons-io.version}</version>
+  </dependency>
     <dependency>
       <groupId>nf.fr.k49</groupId>
       <artifactId>shielddb-core</artifactId>
