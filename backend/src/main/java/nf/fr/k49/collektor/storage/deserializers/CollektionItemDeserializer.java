@@ -31,8 +31,13 @@ public class CollektionItemDeserializer implements JsonListDeserializer<Collekti
         obj.get("photoUrls").getAsJsonArray().forEach(url -> {
             photoUrls.add(url.getAsString());
         });
-        final Map<String, Object> customFields = this.gson.fromJson(obj.get("customFields"), Map.class);
+        final Map<String, Object> customFields = jsonToMap(obj.get("customFields"));
         return new CollektionItem(id, label, photoUrls, customFields);
+    }
+
+    @SuppressWarnings("unchecked")
+    private Map<String, Object> jsonToMap(JsonElement jsonElement) {
+       return this.gson.fromJson(jsonElement, Map.class);
     }
 
 }
