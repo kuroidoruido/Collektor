@@ -3,10 +3,16 @@
         <mat-card-title>{{ item.label }}</mat-card-title>
     </mat-card-header>
     <ng-template [ngIf]="item.photoUrls && item.photoUrls.length > 0" [ngIfElse]="noPhoto">
-        <img mat-card-image [src]="item.photoUrls[0]" alt="Photo 1">
+        <a mat-card-image
+            [ngStyle]="{'background-image': 'url(\''+item.photoUrls[0]+'\')'}">
+            <img [src]="item.photoUrls[0]" hidden alt="Photo 1">
+        </a>
     </ng-template>
     <ng-template #noPhoto>
-        <img mat-card-image src="assets/default-item.svg" alt="No image for this item">
+        <a mat-card-image
+            [ngStyle]="{'background-image':'url(\'assets/default-item.svg\')'}">
+            <img src="assets/default-item.svg" hidden alt="No image for this item">
+        </a>
     </ng-template>
     <mat-card-actions [align]="'end'">
         <a mat-button [href]="'/collection/item/'+item.id">Edit</a>

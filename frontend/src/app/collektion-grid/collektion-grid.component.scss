@@ -2,4 +2,8 @@
 
 :host {
     @include responsive-grid;
+
+    app-collektion-tile {
+        margin-bottom: 2rem;
+    }
 }

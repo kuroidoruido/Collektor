@@ -2,14 +2,20 @@
     <mat-card-header>
         <mat-card-title>{{ collektion.label }}</mat-card-title>
     </mat-card-header>
-    <a mat-card-image [routerLink]="['/collection/', collektion.id]">
-        <ng-template [ngIf]="collektion.imgUrl" [ngIfElse]="noPhoto">
-            <img [src]="collektion.imgUrl" [alt]="collektion.label + '  thumb'">
-        </ng-template>
-        <ng-template #noPhoto>
-            <img src="assets/default-collection.svg" alt="No image for this collection">
-        </ng-template>
-    </a>
+    <ng-template [ngIf]="collektion.imgUrl" [ngIfElse]="noPhoto">
+        <a mat-card-image
+            [routerLink]="['/collection/', collektion.id]" 
+            [ngStyle]="{'background-image': 'url(\''+collektion.imgUrl+'\')'}">
+            <img [src]="collektion.imgUrl" hidden [alt]="collektion.label + '  thumb'">
+        </a>
+    </ng-template>
+    <ng-template #noPhoto>
+        <a mat-card-image
+            [routerLink]="['/collection/', collektion.id]"
+            [ngStyle]="{'background-image':'url(\'assets/default-collection.svg\')'}">
+            <img src="assets/default-collection.svg" hidden alt="No image for this collection">
+        </a>
+    </ng-template>
     <mat-card-actions [align]="'end'">
         <a mat-button [routerLink]="['/collection/edit/', collektion.id]">Edit</a>
         <a mat-button [routerLink]="['/collection/', collektion.id]">Open</a>
