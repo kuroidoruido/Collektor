@@ -3,6 +3,7 @@ import { first } from 'rxjs/operators';
 
 import { BackendService } from 'src/app/backend/backend.service';
 import { ImageInfo } from 'src/app/model/ImageInfo';
+import { isDefined } from 'src/app/shared/assert.utils';
 
 @Component({
   selector: 'app-image-selector',
@@ -20,7 +21,11 @@ export class ImageSelectorComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.model) {
       const nextModel = changes.model.currentValue;
-      this.id = nextModel.substr(nextModel.lastIndexOf('/')+1);
+      if (isDefined(nextModel)) {
+        this.id = nextModel.substr(nextModel.lastIndexOf('/')+1);
+      } else {
+        this.id = undefined;
+      }
     }
   }
 
