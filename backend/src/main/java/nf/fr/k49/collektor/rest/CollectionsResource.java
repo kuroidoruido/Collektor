@@ -1,5 +1,6 @@
 package nf.fr.k49.collektor.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -7,8 +8,10 @@ import java.util.UUID;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
@@ -45,5 +48,36 @@ public class CollectionsResource {
             return Optional.of(oneWithGeneratedId);
         }
         return Optional.empty();
+    }
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response editOne(Collektion one) {
+        var indexes = new ArrayList<Integer>();
+        var collektions = this.storage.getCollektions();
+        for (var i = 0; i < collektions.size(); i++) {
+            var elt = collektions.get(i);
+            if(elt.id().equals(one.id())) {
+                indexes.add(i);
+                break;
+            }
+        }
+        if(!indexes.isEmpty()) {
+            var allDeleted = indexes.stream()
+                .map(i -> this.storage.getCollektions().remove(i.intValue()))
+                .map(deleted -> deleted != null)
+                .reduce(Boolean::logicalOr);
+            if(allDeleted.isPresent() && allDeleted.get()) {
+                if(this.storage.getCollektions().add(one)) {
+                    return Response.ok(one).build();
+                } else {
+                    return Response.status(500).build();
+                }
+            } else {
+                return Response.status(404).build();
+            }
+        } else {
+            return Response.status(404).build();
+        }
     }
 }

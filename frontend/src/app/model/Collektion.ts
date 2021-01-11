@@ -12,3 +12,4 @@ export interface CollektionItemField {
 }
 
 export type CollektionItemFieldType = 'TEXT'  | 'BOOLEAN' | 'INTEGER' | 'DATE';
+export const CollektionItemFieldTypes: CollektionItemFieldType[] = [ 'TEXT', 'BOOLEAN', 'INTEGER', 'DATE' ];

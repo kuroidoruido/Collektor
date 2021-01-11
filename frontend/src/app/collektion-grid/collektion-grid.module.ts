@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 
 import { BackendModule } from 'src/app/backend/backend.module';
+import { AddButtonModule } from '../shared/add-button/add-button.module';
 import { CollektionGridComponent } from './collektion-grid.component';
 import { CollektionTileComponent } from './collektion-tile/collektion-tile.component';
 
@@ -15,6 +16,7 @@ import { CollektionTileComponent } from './collektion-tile/collektion-tile.compo
     RouterModule,
     MatButtonModule,
     MatCardModule,
+    AddButtonModule,
     BackendModule,
   ],
   exports: [CollektionGridComponent],

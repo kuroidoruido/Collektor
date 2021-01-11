@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -42,6 +43,19 @@ public class ImagesResource {
             .header("Content-Disposition", "attachment;filename=" + imgFile.get().getName())
             .header("Content-type", Files.probeContentType(imgFile.get().toPath()))
             .build();
+    }
+
+    @DELETE
+    @Path("{imageId}")
+    public Response deleteOne(@PathParam String imageId) {
+        var res = this.storage.deleteImage(imageId);
+        if(res.isEmpty()) {
+            return Response.status(404).build();
+        } else if (res.get()) {
+            return Response.ok().build();
+        } else {
+            return Response.status(500).build();
+        }
     }
 
     @POST

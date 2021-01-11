@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    padding: 1rem;
+    width: 100%;
+
+    mat-form-field, button.btn-add-custom-field {
+        width: 100%;
+    }
+
+    fieldset {
+        border-radius: 4px;
+        margin-bottom: 1rem;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+    }
+}

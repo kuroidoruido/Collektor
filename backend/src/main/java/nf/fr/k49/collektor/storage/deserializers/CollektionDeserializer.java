@@ -21,7 +21,8 @@ public class CollektionDeserializer implements JsonListDeserializer<Collektion> 
         final String id = obj.get("id").getAsString();
         final String label = obj.get("label").getAsString();
         String imgUrl = null;
-        if (!obj.get("imgUrl").isJsonNull()) {
+        var imgUrlJsonElement = obj.get("imgUrl");
+        if (imgUrlJsonElement != null && !imgUrlJsonElement.isJsonNull()) {
             imgUrl = obj.get("imgUrl").getAsString();
         }
         final List<CollektionItemField> customFields = new ArrayList<CollektionItemField>();

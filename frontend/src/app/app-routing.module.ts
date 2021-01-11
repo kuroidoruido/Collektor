@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CollektionGridComponent } from './collektion-grid/collektion-grid.component';
-import { CollektionGridModule } from './collektion-grid/collektion-grid.module';
-import { ItemGridComponent } from './item-grid/item-grid.component';
-import { ItemGridModule } from './item-grid/item-grid.module';
+import { CollektionGridModule, CollektionGridComponent } from './collektion-grid';
+import { EditCollektionModule, AddCollektionComponent, EditCollektionComponent } from './edit-collektion';
+import { ItemGridModule, ItemGridComponent } from './item-grid';
 
 const routes: Routes = [
   { path: '', component: CollektionGridComponent, pathMatch: 'full'},
-  { path: 'collection/:collektionId', component: ItemGridComponent}
+  { path: 'collection/add', component: AddCollektionComponent},
+  { path: 'collection/:collektionId', component: ItemGridComponent},
+  { path: 'collection/edit/:collektionId', component: EditCollektionComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CollektionGridModule, ItemGridModule],
+  imports: [RouterModule.forRoot(routes), CollektionGridModule, EditCollektionModule, ItemGridModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

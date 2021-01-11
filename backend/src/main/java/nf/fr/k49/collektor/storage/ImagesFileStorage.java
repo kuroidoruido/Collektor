@@ -35,6 +35,20 @@ public class ImagesFileStorage implements ImagesStorage {
         return Optional.empty();
     }
 
+    public Optional<Boolean> deleteImage(String imageId) {
+        var imgDirPath = Paths.get(this.config.baseDir, IMG_DIR_NAME);
+        var imgDir = imgDirPath.toFile();
+        var fileNames = imgDir.list((File dir, String name) -> name != null && name.startsWith(imageId));
+        if (fileNames != null && fileNames.length >= 1) {
+            if (Paths.get(imgDirPath.toString(), fileNames[0]).toFile().delete()) {
+                return Optional.of(true);
+            } else {
+                return Optional.of(false);
+            }
+        }
+        return Optional.empty();
+    }
+
     @Override
     public Optional<ImageInfo> createImage(InputStream fileInputStream, String filename) {
         try {
@@ -43,7 +57,7 @@ public class ImagesFileStorage implements ImagesStorage {
             var fileUuid = UUID.randomUUID().toString();
             var filePath = Paths.get(this.config.baseDir, IMG_DIR_NAME, fileUuid+"."+fileExtension);
             Files.write(filePath, bytes);
-            return Optional.of(new ImageInfo("/api/imgs/"+fileUuid));
+            return Optional.of(new ImageInfo(fileUuid, "/api/imgs/"+fileUuid));
         } catch(IOException e) {
             e.printStackTrace();
             return Optional.empty();
