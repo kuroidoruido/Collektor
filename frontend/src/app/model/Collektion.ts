@@ -1,13 +1,13 @@
 export interface Collektion {
-    id: String;
-    label: String;
-    imgUrl?: String;
+    id: string;
+    label: string;
+    imgUrl?: string;
     customFields: CollektionItemField[];
 }
 
 export interface CollektionItemField {
-    key: String;
-    label: String;
+    key: string;
+    label: string;
     type: CollektionItemFieldType;
 }
 

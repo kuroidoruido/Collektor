@@ -8,6 +8,10 @@ import { BackendService } from 'src/app/backend/backend.service';
 import { CollektionItem } from 'src/app/model/CollektionItem';
 import { isDefined, isUndefined } from 'src/app/shared/assert.utils';
 
+function collektionItemLabelComparator(a: CollektionItem, b: CollektionItem): number {
+  return a.label.localeCompare(b.label);
+}
+
 @UntilDestroy()
 @Component({
   selector: 'app-item-grid',
@@ -27,7 +31,8 @@ export class ItemGridComponent implements OnInit {
       map(params => params.get('collektionId')),
       filter(isDefined),
       mergeMap(collektionId => this.backend.getCollektionItem(collektionId)),
-      map(items => isUndefined(items) || items.length === 0 ? undefined : items)
+      map(items => isUndefined(items) || items.length === 0 ? undefined : items),
+      map(items => items?.sort(collektionItemLabelComparator)),
     ).subscribe(this.items$);
   }
 }

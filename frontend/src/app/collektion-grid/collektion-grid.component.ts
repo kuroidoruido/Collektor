@@ -8,6 +8,10 @@ import { BackendService } from 'src/app/backend/backend.service';
 import { Collektion } from 'src/app/model/Collektion';
 import { isUndefined } from '../shared/assert.utils';
 
+function collektionLabelComparator(a: Collektion, b: Collektion): number {
+  return a.label.localeCompare(b.label);
+}
+
 @UntilDestroy()
 @Component({
   selector: 'app-collektion-grid',
@@ -23,7 +27,8 @@ export class CollektionGridComponent implements OnInit {
   ngOnInit(): void {
     this.backend.getCollektions().pipe(
       untilDestroyed(this),
-      map(collections => isUndefined(collections) || collections.length === 0 ? undefined : collections)
+      map(collections => isUndefined(collections) || collections.length === 0 ? undefined : collections),
+      map(collections => collections?.sort(collektionLabelComparator)),
     ).subscribe(this.collektions$);
   }
 
