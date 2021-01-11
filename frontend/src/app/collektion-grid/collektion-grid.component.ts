@@ -25,11 +25,15 @@ export class CollektionGridComponent implements OnInit {
   constructor(private backend: BackendService, private router: Router) {}
 
   ngOnInit(): void {
+    this.refreshCollektions();
+  }
+  
+  private refreshCollektions(): void {
     this.backend.getCollektions().pipe(
       untilDestroyed(this),
       map(collections => isUndefined(collections) || collections.length === 0 ? undefined : collections),
       map(collections => collections?.sort(collektionLabelComparator)),
-    ).subscribe(this.collektions$);
+    ).subscribe(collections => this.collektions$.next(collections));
   }
 
   goToAddPage(): void {
