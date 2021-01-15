@@ -6,14 +6,14 @@
         <a mat-card-image
             [routerLink]="['/collection/', collektion.id]" 
             [ngStyle]="{'background-image': 'url(\''+collektion.imgUrl+'\')'}">
-            <img [src]="collektion.imgUrl" hidden [alt]="collektion.label + '  thumb'">
+            <img [src]="collektion.imgUrl" hidden [alt]="collektion.label + '  thumb'" loading="lazy">
         </a>
     </ng-template>
     <ng-template #noPhoto>
         <a mat-card-image
             [routerLink]="['/collection/', collektion.id]"
             [ngStyle]="{'background-image':'url(\'assets/default-collection.svg\')'}">
-            <img src="assets/default-collection.svg" hidden alt="No image for this collection">
+            <img src="assets/default-collection.svg" hidden alt="No image for this collection" loading="lazy">
         </a>
     </ng-template>
     <mat-card-actions [align]="'end'">

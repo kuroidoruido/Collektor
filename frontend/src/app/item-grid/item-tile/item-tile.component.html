@@ -5,13 +5,13 @@
     <ng-template [ngIf]="item.photoUrls && item.photoUrls.length > 0" [ngIfElse]="noPhoto">
         <a mat-card-image
             [ngStyle]="{'background-image': 'url(\''+item.photoUrls[0]+'\')'}">
-            <img [src]="item.photoUrls[0]" hidden alt="Photo 1">
+            <img [src]="item.photoUrls[0]" hidden alt="Photo 1" loading="lazy">
         </a>
     </ng-template>
     <ng-template #noPhoto>
         <a mat-card-image
             [ngStyle]="{'background-image':'url(\'assets/default-item.svg\')'}">
-            <img src="assets/default-item.svg" hidden alt="No image for this item">
+            <img src="assets/default-item.svg" hidden alt="No image for this item" loading="lazy">
         </a>
     </ng-template>
     <mat-card-actions [align]="'end'">
