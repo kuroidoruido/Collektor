@@ -34,6 +34,10 @@ export class BackendService {
   createCollektionItem(collektionId: String, newOne: Omit<CollektionItem, 'id'>): Observable<CollektionItem> {
     return this.http.post<CollektionItem>(`/api/collections/${collektionId}/items`, newOne);
   }
+  
+  updateCollektionItem(collektionId: String, one: CollektionItem): Observable<CollektionItem> {
+    return this.http.put<CollektionItem>(`/api/collections/${collektionId}/items`, one);
+  }
 
   createImage(file: File): Observable<ImageInfo[]> {
     const formData: FormData = new FormData();

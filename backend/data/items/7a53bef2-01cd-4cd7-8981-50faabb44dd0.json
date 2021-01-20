@@ -17,5 +17,19 @@
     "customFields": {
       "game-id": "WS-XXX-02"
     }
+  },
+  {
+    "id": "44ebedf1-c203-4ee3-a5d5-843c332fbd06",
+    "label": "Kunnikuman",
+    "photoUrls": [
+      "/api/imgs/130b728d-c09a-4ba5-858d-848856fb0f7c"
+    ],
+    "customFields": {
+      "game-id": "SWJ-BANC34",
+      "developer": "Bandai",
+      "released-on": "2002-03-01T23:00:00.000Z",
+      "count": 1,
+      "with-box": true
+    }
   }
 ]

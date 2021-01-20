@@ -34,9 +34,9 @@
     ]
   },
   {
-    "id": "7a53bef2-01cd-4cd7-8981-50faabb44dd0",
-    "label": "Wonderswan games",
-    "imgUrl": "/api/imgs/06813b7a-e7e0-4a33-a0f2-8aef15d5ed86",
+    "id": "af06bcae-95ed-4d2c-81a6-98815c983eb3",
+    "label": "Switch games",
+    "imgUrl": "/api/imgs/26ff6850-f076-48fb-8afc-78f092d8d3ba",
     "customFields": [
       {
         "key": "game-id",
@@ -56,9 +56,9 @@
     ]
   },
   {
-    "id": "af06bcae-95ed-4d2c-81a6-98815c983eb3",
-    "label": "Switch games",
-    "imgUrl": "/api/imgs/26ff6850-f076-48fb-8afc-78f092d8d3ba",
+    "id": "7a53bef2-01cd-4cd7-8981-50faabb44dd0",
+    "label": "Wonderswan games",
+    "imgUrl": "/api/imgs/06813b7a-e7e0-4a33-a0f2-8aef15d5ed86",
     "customFields": [
       {
         "key": "game-id",
@@ -73,7 +73,17 @@
       {
         "key": "released-on",
         "label": "Released on",
-        "type": "TEXT"
+        "type": "DATE"
+      },
+      {
+        "key": "with-box",
+        "label": "With box",
+        "type": "BOOLEAN"
+      },
+      {
+        "key": "count",
+        "label": "Count",
+        "type": "INTEGER"
       }
     ]
   }

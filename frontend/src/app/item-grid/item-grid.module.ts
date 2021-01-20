@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 import { BackendModule } from 'src/app/backend/backend.module';
+import { AddButtonModule } from 'src/app/shared/add-button/add-button.module';
 import { ItemGridComponent } from './item-grid.component';
 import { ItemTileComponent } from './item-tile/item-tile.component';
 
@@ -14,6 +15,7 @@ import { ItemTileComponent } from './item-tile/item-tile.component';
     MatButtonModule,
     MatCardModule,
     BackendModule,
+    AddButtonModule,
   ],
   exports: [ItemGridComponent],
 })

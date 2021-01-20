@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { filter, first, map, mergeMap } from 'rxjs/operators';
 
 import { BackendService } from 'src/app/backend/backend.service';
 import { CollektionItem } from 'src/app/model/CollektionItem';
@@ -19,20 +19,24 @@ function collektionItemLabelComparator(a: CollektionItem, b: CollektionItem): nu
   styleUrls: ['./item-grid.component.scss']
 })
 export class ItemGridComponent implements OnInit {
-
-
+  collektionId$ = this.activatedRoute.paramMap.pipe(map(params => params.get('collektionId')));
   items$ = new BehaviorSubject<CollektionItem[] | undefined>(undefined);
 
-  constructor(private activatedRoute: ActivatedRoute, private backend: BackendService) {}
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private backend: BackendService) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.pipe(
+    this.collektionId$.pipe(
       untilDestroyed(this),
-      map(params => params.get('collektionId')),
       filter(isDefined),
       mergeMap(collektionId => this.backend.getCollektionItem(collektionId)),
       map(items => isUndefined(items) || items.length === 0 ? undefined : items),
       map(items => items?.sort(collektionItemLabelComparator)),
     ).subscribe(this.items$);
+  }
+
+  goToAddItem(): void {
+    this.collektionId$.pipe(first()).subscribe(collektionId => {
+      this.router.navigate([`/collection/${collektionId}/item/add`]);
+    })
   }
 }

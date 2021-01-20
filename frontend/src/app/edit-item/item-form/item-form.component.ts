@@ -1,0 +1,59 @@
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { Collektion, CollektionItemFieldType } from 'src/app/model/Collektion';
+import { CollektionItem } from 'src/app/model/CollektionItem';
+import { isDefined } from 'src/app/shared/assert.utils';
+import { CustomFormControl, formControlFromCustomField } from './custom-form-controls';
+
+type CustomFormArray = Omit<FormArray, 'controls'> & { controls: CustomFormControl<CollektionItemFieldType>[] };
+
+function emptyCollektionItem(): CollektionItem {
+  return {
+    id: '',
+    label: '',
+    customFields: {},
+    photoUrls: [],
+  };
+}
+
+@Component({
+  selector: 'app-item-form',
+  templateUrl: './item-form.component.html',
+  styleUrls: ['./item-form.component.scss']
+})
+export class ItemFormComponent implements OnChanges {
+  @Input() collektion: Collektion | null | undefined;
+  @Input() model: CollektionItem = emptyCollektionItem();
+  @Output() save = new EventEmitter<CollektionItem>();
+
+  form = new FormGroup({
+    label: new FormControl(this.model.label, Validators.required),
+    photoUrls: new FormControl(this.model.photoUrls[0]),
+    customFields: new FormArray([]),
+  });
+
+  get customFieldsArray(): CustomFormArray {
+    return (this.form.get('customFields') as unknown) as CustomFormArray;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (isDefined(changes.collektion) && isDefined(changes.collektion.currentValue)) {
+      const { id, ...newModel }: Collektion = changes.collektion.currentValue;
+      newModel.customFields.forEach((field) => {
+        this.customFieldsArray.controls.push(formControlFromCustomField(field));
+      });
+    }
+  }
+
+  submit(): void {
+    const formValue = this.form.getRawValue();
+    const newModel: CollektionItem = { ...emptyCollektionItem(), ...this.model };
+    newModel.label = formValue.label;
+    newModel.photoUrls = [formValue.photoUrls];
+    this.customFieldsArray.controls.forEach((control, index) => {
+      newModel.customFields[control.key] = formValue.customFields[index];
+    });
+    this.save.emit(newModel);
+  }
+}
