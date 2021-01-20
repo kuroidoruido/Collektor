@@ -28,7 +28,7 @@ export class ItemGridComponent implements OnInit {
     this.collektionId$.pipe(
       untilDestroyed(this),
       filter(isDefined),
-      mergeMap(collektionId => this.backend.getCollektionItem(collektionId)),
+      mergeMap(collektionId => this.backend.getCollektionItems(collektionId)),
       map(items => isUndefined(items) || items.length === 0 ? undefined : items),
       map(items => items?.sort(collektionItemLabelComparator)),
     ).subscribe(this.items$);

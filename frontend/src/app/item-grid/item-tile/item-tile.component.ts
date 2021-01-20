@@ -8,5 +8,6 @@ import { CollektionItem } from 'src/app/model/CollektionItem';
   styleUrls: ['./item-tile.component.scss']
 })
 export class ItemTileComponent {
+  @Input() collektionId = 'unknown';
   @Input() item: CollektionItem | undefined;
 }

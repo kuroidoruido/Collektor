@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, first, map, mergeMap } from 'rxjs/operators';
+import { filter, first, map, mergeMap, tap } from 'rxjs/operators';
 
 import { BackendService } from 'src/app/backend/backend.service';
 import { CollektionItem } from 'src/app/model/CollektionItem';
@@ -22,9 +22,10 @@ export class AddItemComponent  {
     this.collektionId$.pipe(
       first(),
       filter(isDefined),
-      mergeMap(collektionId => this.backend.createCollektionItem(collektionId, newItem))
+      mergeMap(collektionId => this.backend.createCollektionItem(collektionId, newItem).pipe(
+        tap(() => this.router.navigate(['/collection', collektionId]))
+      ))
     ).subscribe(savedItem => {
-      this.router.navigate(['']);
       this.snackBar.open(`Item ${savedItem.label} saved!`, 'Close');
     });
   }

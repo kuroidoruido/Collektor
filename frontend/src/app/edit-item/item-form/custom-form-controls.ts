@@ -39,4 +39,13 @@ export function formControlFromCustomField(field: CollektionItemField): CustomFo
         case 'INTEGER': return new IntegerFormControl(field.key, field.label);
         case 'DATE': return new DateFormControl(field.key, field.label);
     }
+  }
+  
+  export function defaultTypeForFormControl(type: CollektionItemFieldType): unknown {
+    switch(type) {
+        case 'TEXT': return '';
+        case 'BOOLEAN': return false;
+        case 'INTEGER': return 0;
+        case 'DATE': return '';
+    } 
 }

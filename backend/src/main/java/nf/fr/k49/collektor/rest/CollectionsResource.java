@@ -53,17 +53,17 @@ public class CollectionsResource {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public Response editOne(Collektion one) {
-        var indexes = new ArrayList<Integer>();
+        Optional<Integer> index = Optional.empty();
         var collektions = this.storage.getCollektions();
         for (var i = 0; i < collektions.size(); i++) {
             var elt = collektions.get(i);
             if(elt.id().equals(one.id())) {
-                indexes.add(i);
+                index = Optional.of(i);
                 break;
             }
         }
-        if(!indexes.isEmpty()) {
-            var allDeleted = indexes.stream()
+        if(!index.isEmpty()) {
+            var allDeleted = index.stream()
                 .map(i -> this.storage.getCollektions().remove(i.intValue()))
                 .map(deleted -> deleted != null)
                 .reduce(Boolean::logicalOr);

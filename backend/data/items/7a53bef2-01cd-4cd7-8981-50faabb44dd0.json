@@ -11,14 +11,6 @@
     }
   },
   {
-    "id": "b690fb41-a41e-4396-96de-3e0b1d18c91e",
-    "label": "Panda",
-    "photoUrls": [],
-    "customFields": {
-      "game-id": "WS-XXX-02"
-    }
-  },
-  {
     "id": "44ebedf1-c203-4ee3-a5d5-843c332fbd06",
     "label": "Kunnikuman",
     "photoUrls": [
@@ -28,8 +20,22 @@
       "game-id": "SWJ-BANC34",
       "developer": "Bandai",
       "released-on": "2002-03-01T23:00:00.000Z",
-      "count": 1,
+      "count": 1.0,
       "with-box": true
+    }
+  },
+  {
+    "id": "b690fb41-a41e-4396-96de-3e0b1d18c91e",
+    "label": "Tarepanda no Gunpey",
+    "photoUrls": [
+      "/api/imgs/929a0d74-6788-4268-9617-d52e6a27a9cd"
+    ],
+    "customFields": {
+      "game-id": "SWJ-BAN01F",
+      "developer": "Bandai",
+      "released-on": "1999-12-08T23:00:00.000Z",
+      "with-box": true,
+      "count": 1
     }
   }
 ]

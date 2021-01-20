@@ -15,7 +15,7 @@ export class BackendService {
     return this.http.get<Collektion[]>('/api/collections');
   }
 
-  getCollektion(collektionId: String): Observable<Collektion> {
+  getCollektion(collektionId: string): Observable<Collektion> {
     return this.http.get<Collektion>(`/api/collections/${collektionId}`);
   }
 
@@ -27,15 +27,18 @@ export class BackendService {
     return this.http.put<Collektion>('/api/collections', one);
   }
   
-  getCollektionItem(collektionId: String): Observable<CollektionItem[]> {
+  getCollektionItems(collektionId: string): Observable<CollektionItem[]> {
     return this.http.get<CollektionItem[]>(`/api/collections/${collektionId}/items`);
   }
+  getCollektionItem(collektionId: string, itemId: string): Observable<CollektionItem> {
+    return this.http.get<CollektionItem>(`/api/collections/${collektionId}/items/${itemId}`);
+  }
   
-  createCollektionItem(collektionId: String, newOne: Omit<CollektionItem, 'id'>): Observable<CollektionItem> {
+  createCollektionItem(collektionId: string, newOne: Omit<CollektionItem, 'id'>): Observable<CollektionItem> {
     return this.http.post<CollektionItem>(`/api/collections/${collektionId}/items`, newOne);
   }
   
-  updateCollektionItem(collektionId: String, one: CollektionItem): Observable<CollektionItem> {
+  updateCollektionItem(collektionId: string, one: CollektionItem): Observable<CollektionItem> {
     return this.http.put<CollektionItem>(`/api/collections/${collektionId}/items`, one);
   }
 

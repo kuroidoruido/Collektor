@@ -1,9 +1,11 @@
-<ng-container *ngIf="items$ | async as items; else noItems">
-    <ng-container *ngFor="let item of items">
-        <app-item-tile [item]="item"></app-item-tile>
+<ng-container *ngIf="collektionId$ | async as collektionId">
+    <ng-container *ngIf="items$ | async as items; else noItems">
+        <ng-container *ngFor="let item of items">
+            <app-item-tile [collektionId]="collektionId" [item]="item"></app-item-tile>
+        </ng-container>
     </ng-container>
+    <ng-template #noItems>
+        <div>No items in this collection.</div>
+    </ng-template>
+    <app-add-button (add)="goToAddItem()"></app-add-button>
 </ng-container>
-<ng-template #noItems>
-    <div>No items in this collection.</div>
-</ng-template>
-<app-add-button (add)="goToAddItem()"></app-add-button>

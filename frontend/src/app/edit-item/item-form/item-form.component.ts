@@ -4,7 +4,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Collektion, CollektionItemFieldType } from 'src/app/model/Collektion';
 import { CollektionItem } from 'src/app/model/CollektionItem';
 import { isDefined } from 'src/app/shared/assert.utils';
-import { CustomFormControl, formControlFromCustomField } from './custom-form-controls';
+import { CustomFormControl, defaultTypeForFormControl, formControlFromCustomField } from './custom-form-controls';
 
 type CustomFormArray = Omit<FormArray, 'controls'> & { controls: CustomFormControl<CollektionItemFieldType>[] };
 
@@ -42,6 +42,16 @@ export class ItemFormComponent implements OnChanges {
       const { id, ...newModel }: Collektion = changes.collektion.currentValue;
       newModel.customFields.forEach((field) => {
         this.customFieldsArray.controls.push(formControlFromCustomField(field));
+      });
+    }
+    if (isDefined(changes.model) && isDefined(changes.model.currentValue)) {
+      const newModel: CollektionItem = changes.model.currentValue;
+      const photoUrls = isDefined(newModel.photoUrls) && isDefined(newModel.photoUrls[0]) ? newModel.photoUrls[0] : '';
+      const customFields = this.customFieldsArray.controls.map(({ key, type }) => newModel.customFields[key] ?? defaultTypeForFormControl(type));
+      this.form.setValue({
+        label: newModel.label,
+        photoUrls,
+        customFields,
       });
     }
   }
