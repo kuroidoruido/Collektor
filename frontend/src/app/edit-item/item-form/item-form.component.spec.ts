@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { CommonFormElementsModule } from 'src/app/shared/common-form-elements.module';
 import { ItemFormComponent } from './item-form.component';
 
 describe('ItemFormComponent', () => {
@@ -8,7 +11,8 @@ describe('ItemFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemFormComponent ]
+      declarations: [ ItemFormComponent ],
+      imports: [NoopAnimationsModule, RouterTestingModule.withRoutes([]), CommonFormElementsModule]
     })
     .compileComponents();
   });

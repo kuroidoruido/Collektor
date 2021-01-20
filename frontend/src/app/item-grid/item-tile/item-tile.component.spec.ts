@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ItemTileComponent } from './item-tile.component';
 
@@ -8,7 +9,8 @@ describe('ItemTileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemTileComponent ]
+      declarations: [ItemTileComponent],
+      imports: [RouterTestingModule.withRoutes([])]
     })
     .compileComponents();
   });

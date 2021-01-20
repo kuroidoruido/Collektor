@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AddButtonComponent } from './add-button.component';
 
@@ -8,7 +9,8 @@ describe('AddButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddButtonComponent ]
+      declarations: [AddButtonComponent],
+      imports: [MatIconModule]
     })
     .compileComponents();
   });

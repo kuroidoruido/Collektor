@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CollektionTileComponent } from './collektion-tile.component';
 
@@ -8,7 +10,8 @@ describe('CollektionTileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CollektionTileComponent ]
+      declarations: [CollektionTileComponent],
+      imports: [MatCardModule, RouterTestingModule.withRoutes([])]
     })
     .compileComponents();
   });
