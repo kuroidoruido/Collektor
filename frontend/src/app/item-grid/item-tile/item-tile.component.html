@@ -14,8 +14,30 @@
             <img src="assets/default-item.svg" hidden alt="No image for this item" loading="lazy">
         </a>
     </ng-template>
+    <mat-card-content>
+        <ul>
+            <ng-container *ngFor="let customField of collektion?.customFields">
+                <li>
+                    <ng-container [ngSwitch]="customField.type">
+                        <ng-container *ngSwitchCase="'TEXT'">
+                            <span class="label">{{ customField.label }}</span>:&nbsp;<span class="value">{{ getCustomFieldAsText(item.customFields, customField) }}</span>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'BOOLEAN'">
+                            <span class="label">{{ customField.label }}</span>:&nbsp;<span class="value">{{ getCustomFieldAsBoolean(item.customFields, customField) | yesOrNo }}</span>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'INTEGER'">
+                            <span class="label">{{ customField.label }}</span>:&nbsp;<span class="value">{{ getCustomFieldAsInteger(item.customFields, customField) }}</span>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'DATE'">
+                            <span class="label">{{ customField.label }}</span>:&nbsp;<span class="value">{{ getCustomFieldAsDate(item.customFields, customField) | date }}</span>
+                        </ng-container>
+                    </ng-container>
+                </li>
+            </ng-container>
+        </ul>          
+    </mat-card-content>
     <mat-card-actions [align]="'end'">
-        <a mat-button [routerLink]="'/collection/'+collektionId+'/item/'+item.id">Edit</a>
+        <a mat-button [routerLink]="['/collection',collektion?.id,'item','edit',item.id]">Edit</a>
     </mat-card-actions>
 </mat-card>
   

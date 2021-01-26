@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Collektion, CollektionItemField } from 'src/app/model/Collektion';
 
 import { CollektionItem } from 'src/app/model/CollektionItem';
 
@@ -8,6 +9,26 @@ import { CollektionItem } from 'src/app/model/CollektionItem';
   styleUrls: ['./item-tile.component.scss']
 })
 export class ItemTileComponent {
-  @Input() collektionId = 'unknown';
+  @Input() collektion: Collektion | undefined;
   @Input() item: CollektionItem | undefined;
+
+  private getCustomField<T>(customFields: CollektionItem['customFields'], def: CollektionItemField): T {
+    return (customFields[def.key] as any) as T;
+  }
+
+  getCustomFieldAsBoolean(customFields: CollektionItem['customFields'], def: CollektionItemField): boolean {
+    return this.getCustomField<boolean>(customFields, def);
+  }
+
+  getCustomFieldAsInteger(customFields: CollektionItem['customFields'], def: CollektionItemField): number {
+    return this.getCustomField<number>(customFields, def);
+  }
+
+  getCustomFieldAsText(customFields: CollektionItem['customFields'], def: CollektionItemField): string {
+    return this.getCustomField<string>(customFields, def);
+  }
+
+  getCustomFieldAsDate(customFields: CollektionItem['customFields'], def: CollektionItemField): Date {
+    return this.getCustomField<Date>(customFields, def);
+  }
 }

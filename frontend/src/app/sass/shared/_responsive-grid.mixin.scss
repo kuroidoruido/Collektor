@@ -1,7 +1,37 @@
-@mixin responsive-grid {
+@mixin responsive-grid($count1, $count2, $count3, $count4, $count5, $count6) {
     display: grid;
-    grid-template-columns: repeat(var(--responsive-column-count), 1fr);
+    // grid-template-columns: repeat(var(--responsive-column-count), 1fr);
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
     padding: 3rem;
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: repeat($count1, 1fr);
+    }
+    
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        grid-template-columns: repeat($count2, 1fr);
+    }
+    
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        grid-template-columns: repeat($count3, 1fr);
+    }
+    
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        grid-template-columns: repeat($count4, 1fr);
+    }
+    
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        grid-template-columns: repeat($count5, 1fr);
+    }
+    
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1900px) {
+        grid-template-columns: repeat($count6, 1fr);
+    }
 }

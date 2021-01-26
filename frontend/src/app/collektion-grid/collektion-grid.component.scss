@@ -1,7 +1,7 @@
 @import 'shared/responsive-grid.mixin.scss';
 
 :host {
-    @include responsive-grid;
+    @include responsive-grid(1,2,3,4,5,6);
 
     app-collektion-tile {
         margin-bottom: 2rem;

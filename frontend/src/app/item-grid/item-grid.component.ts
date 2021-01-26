@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { filter, first, map, mergeMap } from 'rxjs/operators';
 
 import { BackendService } from 'src/app/backend/backend.service';
+import { Collektion } from 'src/app/model/Collektion';
 import { CollektionItem } from 'src/app/model/CollektionItem';
 import { isDefined, isUndefined } from 'src/app/shared/assert.utils';
 
@@ -20,6 +21,7 @@ function collektionItemLabelComparator(a: CollektionItem, b: CollektionItem): nu
 })
 export class ItemGridComponent implements OnInit {
   collektionId$ = this.activatedRoute.paramMap.pipe(map(params => params.get('collektionId')));
+  collektion$ = new BehaviorSubject<Collektion | undefined>(undefined);
   items$ = new BehaviorSubject<CollektionItem[] | undefined>(undefined);
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private backend: BackendService) {}
@@ -32,6 +34,11 @@ export class ItemGridComponent implements OnInit {
       map(items => isUndefined(items) || items.length === 0 ? undefined : items),
       map(items => items?.sort(collektionItemLabelComparator)),
     ).subscribe(this.items$);
+    this.collektionId$.pipe(
+      untilDestroyed(this),
+      filter(isDefined),
+      mergeMap(collektionId => this.backend.getCollektion(collektionId))
+    ).subscribe(this.collektion$);
   }
 
   goToAddItem(): void {

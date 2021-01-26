@@ -3,9 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CollektionGridModule, CollektionGridComponent } from './collektion-grid';
 import { EditCollektionModule, AddCollektionComponent, EditCollektionComponent } from './edit-collektion';
-import { AddItemComponent } from './edit-item/add-item/add-item.component';
-import { EditItemModule } from './edit-item/edit-item.module';
-import { EditItemComponent } from './edit-item/edit-item/edit-item.component';
+import { AddItemComponent, EditItemComponent, EditItemModule } from './edit-item';
 import { ItemGridModule, ItemGridComponent } from './item-grid';
 import { NotFoundComponent, NotFoundModule } from './not-found';
 
@@ -15,7 +13,7 @@ const routes: Routes = [
   { path: 'collection/:collektionId', component: ItemGridComponent},
   { path: 'collection/edit/:collektionId', component: EditCollektionComponent},
   { path: 'collection/:collektionId/item/add', component: AddItemComponent},
-  { path: 'collection/:collektionId/item/:itemId', component: EditItemComponent},
+  { path: 'collection/:collektionId/item/edit/:itemId', component: EditItemComponent},
   { path: '**', component: NotFoundComponent }
 ];
 
