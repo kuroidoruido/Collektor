@@ -56,7 +56,10 @@ public class ImagesFileStorage implements ImagesStorage {
             var fileExtension = filename.contains(".") ? filename.split("\\.")[1] : "";
             var fileUuid = UUID.randomUUID().toString();
             var filePath = Paths.get(this.config.getBaseDir(), IMG_DIR_NAME, fileUuid+"."+fileExtension);
-            var filePath = Paths.get(this.config.baseDir, IMG_DIR_NAME, fileUuid+"."+fileExtension);
+            var imgDir = filePath.getParent().toFile();
+            if(!imgDir.exists()) {
+                imgDir.mkdirs();
+            }
             Files.write(filePath, bytes);
             return Optional.of(new ImageInfo(fileUuid, "/api/imgs/"+fileUuid));
         } catch(IOException e) {
