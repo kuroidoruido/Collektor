@@ -31,7 +31,7 @@ public class CollektionsShieldDBStorage implements CollektionsStorage {
 
     private synchronized List<Collektion> getShieldDbInstance() throws IOException {
         if(this.collections == null) {
-            var collektionJsonPath = Paths.get(config.baseDir, FILE_NAME).toAbsolutePath().toString();
+            var collektionJsonPath = Paths.get(config.getBaseDir(), FILE_NAME).toAbsolutePath().toString();
             Type type = GsonTypeUtils.getType();
 		    Gson gson = new GsonBuilder()
 				.setPrettyPrinting()

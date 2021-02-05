@@ -26,7 +26,7 @@ public class ImagesFileStorage implements ImagesStorage {
     }
 
     public Optional<File> getImage(String imageId) {
-        var imgDirPath = Paths.get(this.config.baseDir, IMG_DIR_NAME);
+        var imgDirPath = Paths.get(this.config.getBaseDir(), IMG_DIR_NAME);
         var imgDir = imgDirPath.toFile();
         var fileNames = imgDir.list((File dir, String name) -> name != null && name.startsWith(imageId));
         if (fileNames != null && fileNames.length >= 1) {
@@ -36,7 +36,7 @@ public class ImagesFileStorage implements ImagesStorage {
     }
 
     public Optional<Boolean> deleteImage(String imageId) {
-        var imgDirPath = Paths.get(this.config.baseDir, IMG_DIR_NAME);
+        var imgDirPath = Paths.get(this.config.getBaseDir(), IMG_DIR_NAME);
         var imgDir = imgDirPath.toFile();
         var fileNames = imgDir.list((File dir, String name) -> name != null && name.startsWith(imageId));
         if (fileNames != null && fileNames.length >= 1) {
@@ -55,6 +55,7 @@ public class ImagesFileStorage implements ImagesStorage {
             byte[] bytes = IOUtils.toByteArray(fileInputStream);
             var fileExtension = filename.contains(".") ? filename.split("\\.")[1] : "";
             var fileUuid = UUID.randomUUID().toString();
+            var filePath = Paths.get(this.config.getBaseDir(), IMG_DIR_NAME, fileUuid+"."+fileExtension);
             var filePath = Paths.get(this.config.baseDir, IMG_DIR_NAME, fileUuid+"."+fileExtension);
             Files.write(filePath, bytes);
             return Optional.of(new ImageInfo(fileUuid, "/api/imgs/"+fileUuid));
