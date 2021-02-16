@@ -19,11 +19,11 @@ public class AppConfig {
         }
         return this.finalBaseDir;
     }
-    
+
     public String getUserHome() {
         return System.getProperty("user.home");
     }
-    
+
     private String getDevDirectory() {
         return System.getProperty("maven.multiModuleProjectDirectory","");
     }

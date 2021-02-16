@@ -1,0 +1,4 @@
+node_modules
+vendor/*.jar
+vendor/jvm/
+out/
