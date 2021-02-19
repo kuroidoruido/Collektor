@@ -1,11 +1,11 @@
 {
   "name": "collektor",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Collektor - simple collection manager to keep tracking all your collections",
   "main": "src/app/main.js",
   "scripts": {
     "prepare-vendor": "npx shx mkdir -p ./vendor && npx shx rm -f ./vendor/*",
-    "copy-jvm-to-vendor": "npx shx cp ../backend/target/collektor-*-SNAPSHOT-runner.jar ./vendor/collektor-web.jar",
+    "copy-jvm-to-vendor": "npx shx cp ../backend/target/collektor-*-runner.jar ./vendor/collektor-web.jar",
     "copy-jar-to-vendor": "npx shx cp -r ../backend/target/runtime-image ./vendor/jvm",
     "postinstall": "npm run prepare-vendor && npm run copy-jvm-to-vendor && npm run copy-jar-to-vendor",
     "start": "electron-forge start",
