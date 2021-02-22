@@ -65,4 +65,18 @@ jobs:
               run: npm run publish
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            
+            - name: Compute checksum
+              working-directory: desktop-wrapper
+              run: |
+                sha256sum out/make/deb/x64/collektor_*_amd64.deb > $(/bin/ls out/make/deb/x64/).sha256
+                sha256sum out/make/rpm/x64/collektor_*_amd64.rpm > $(/bin/ls out/make/rpm/x64/).sha256
+                sha256sum out/make/zip/x64/collektor_*_amd64.zip > $(/bin/ls out/make/zip/x64/).sha256
            
+           - name: Release
+            uses: softprops/action-gh-release@v1
+            with:
+              files: |
+                ./*.sha256
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
