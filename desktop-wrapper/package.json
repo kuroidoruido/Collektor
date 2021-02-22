@@ -1,6 +1,6 @@
 {
   "name": "collektor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Collektor - simple collection manager to keep tracking all your collections",
   "main": "src/app/main.js",
   "scripts": {
