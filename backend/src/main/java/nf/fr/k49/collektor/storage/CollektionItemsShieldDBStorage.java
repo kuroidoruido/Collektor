@@ -34,7 +34,7 @@ public class CollektionItemsShieldDBStorage implements CollektionItemsStorage {
     }
 
     private synchronized List<CollektionItem> getShieldDbInstance(String collectionId) throws IOException {
-        if(!this.items.containsKey(collectionId)) {
+        if (!this.items.containsKey(collectionId)) {
             var itemsJsonPath = Paths.get(config.getBaseDir(), ITEM_DIR_NAME, collectionId+FILE_NAME_SUFFIX).toAbsolutePath().toString();
             Type type = GsonTypeUtils.getType();
 		    Gson gson = new GsonBuilder()

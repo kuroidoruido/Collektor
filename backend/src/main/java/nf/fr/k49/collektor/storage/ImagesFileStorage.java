@@ -57,7 +57,7 @@ public class ImagesFileStorage implements ImagesStorage {
             var fileUuid = UUID.randomUUID().toString();
             var filePath = Paths.get(this.config.getBaseDir(), IMG_DIR_NAME, fileUuid+"."+fileExtension);
             var imgDir = filePath.getParent().toFile();
-            if(!imgDir.exists()) {
+            if (!imgDir.exists()) {
                 imgDir.mkdirs();
             }
             Files.write(filePath, bytes);

@@ -44,7 +44,7 @@ public class CollectionsResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Optional<Collektion> addOne(Collektion one) {
         var oneWithGeneratedId = one.setId(UUID.randomUUID().toString());
-        if(this.storage.getCollektions().add(oneWithGeneratedId)) {
+        if (this.storage.getCollektions().add(oneWithGeneratedId)) {
             return Optional.of(oneWithGeneratedId);
         }
         return Optional.empty();
@@ -57,18 +57,18 @@ public class CollectionsResource {
         var collektions = this.storage.getCollektions();
         for (var i = 0; i < collektions.size(); i++) {
             var elt = collektions.get(i);
-            if(elt.id().equals(one.id())) {
+            if (elt.id().equals(one.id())) {
                 index = Optional.of(i);
                 break;
             }
         }
-        if(!index.isEmpty()) {
+        if (!index.isEmpty()) {
             var allDeleted = index.stream()
                 .map(i -> this.storage.getCollektions().remove(i.intValue()))
                 .map(deleted -> deleted != null)
                 .reduce(Boolean::logicalOr);
-            if(allDeleted.isPresent() && allDeleted.get()) {
-                if(this.storage.getCollektions().add(one)) {
+            if (allDeleted.isPresent() && allDeleted.get()) {
+                if (this.storage.getCollektions().add(one)) {
                     return Response.ok(one).build();
                 } else {
                     return Response.status(500).build();

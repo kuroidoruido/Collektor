@@ -58,18 +58,18 @@ public class CollectionItemsResource {
         var items = this.storage.getItems(collectionId);
         for (var i = 0; i < items.size(); i++) {
             var elt = items.get(i);
-            if(elt.id().equals(one.id())) {
+            if (elt.id().equals(one.id())) {
                 index = Optional.of(i);
                 break;
             }
         }
-        if(!index.isEmpty()) {
+        if (!index.isEmpty()) {
             var allDeleted = index.stream()
                 .map(i -> this.storage.getItems(collectionId).remove(i.intValue()))
                 .map(deleted -> deleted != null)
                 .reduce(Boolean::logicalOr);
-            if(allDeleted.isPresent() && allDeleted.get()) {
-                if(this.storage.getItems(collectionId).add(one)) {
+            if (allDeleted.isPresent() && allDeleted.get()) {
+                if (this.storage.getItems(collectionId).add(one)) {
                     return Response.ok(one).build();
                 } else {
                     return Response.status(500).build();

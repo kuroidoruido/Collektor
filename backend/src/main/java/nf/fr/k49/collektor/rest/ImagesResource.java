@@ -49,7 +49,7 @@ public class ImagesResource {
     @Path("{imageId}")
     public Response deleteOne(@PathParam String imageId) {
         var res = this.storage.deleteImage(imageId);
-        if(res.isEmpty()) {
+        if (res.isEmpty()) {
             return Response.status(404).build();
         } else if (res.get()) {
             return Response.ok().build();

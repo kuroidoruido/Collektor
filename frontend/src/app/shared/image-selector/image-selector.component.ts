@@ -31,7 +31,7 @@ export class ImageSelectorComponent implements OnChanges {
 
   upload(event: any): void {
     let fileList: FileList = event?.target?.files;
-    if(fileList.length > 0) {
+    if (fileList.length > 0) {
       this.backend.createImage(fileList[0]).pipe(first()).subscribe((imageInfo: ImageInfo[]) => {
         this.id = imageInfo[0].id;
         this.model = imageInfo[0].url;
@@ -41,7 +41,7 @@ export class ImageSelectorComponent implements OnChanges {
   }
 
   deleteImage(): void {
-    if(this.id) {
+    if (this.id) {
       this.backend.deleteImage(this.id).subscribe(() => {
         delete this.model;
         delete this.id;
