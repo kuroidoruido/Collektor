@@ -2,6 +2,7 @@ package nf.fr.k49.collektor.storage;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +36,7 @@ public class CollektionItemsShieldDBStorage implements CollektionItemsStorage {
 
     private synchronized List<CollektionItem> getShieldDbInstance(String collectionId) throws IOException {
         if (!this.items.containsKey(collectionId)) {
-            var itemsJsonPath = Paths.get(config.getBaseDir(), ITEM_DIR_NAME, collectionId+FILE_NAME_SUFFIX).toAbsolutePath().toString();
+            var itemsJsonPath = getShieldDbStoragePath(collectionId).toString();
             Type type = GsonTypeUtils.getType();
 		    Gson gson = new GsonBuilder()
 				.setPrettyPrinting()
@@ -51,12 +52,25 @@ public class CollektionItemsShieldDBStorage implements CollektionItemsStorage {
         return this.items.get(collectionId);
     }
 
+    private Path getShieldDbStoragePath(final String collectionId) {
+        return Paths.get(config.getBaseDir(), ITEM_DIR_NAME, collectionId+FILE_NAME_SUFFIX).toAbsolutePath();
+    }
+
     public List<CollektionItem> getItems(String collectionId) {
         try {
             return this.getShieldDbInstance(collectionId);
         } catch (IOException e) {
             e.printStackTrace();
             return List.of();
+        }
+    }
+
+    public boolean deleteStorage(String collectionId) {
+        if (this.items.containsKey(collectionId)) {
+            this.items.remove(collectionId);
+            return getShieldDbStoragePath(collectionId).toFile().delete();
+        } else {
+            return false;
         }
     }
 

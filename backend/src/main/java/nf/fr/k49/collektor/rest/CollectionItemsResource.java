@@ -1,10 +1,12 @@
 package nf.fr.k49.collektor.rest;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -45,6 +47,7 @@ public class CollectionItemsResource {
     public Optional<CollektionItem> addOne(@PathParam String collectionId, CollektionItem one) {
         var oneWithGeneratedId = one.setId(UUID.randomUUID().toString());
         if (this.storage.getItems(collectionId).add(oneWithGeneratedId)) {
+            this.storage.getItems(collectionId).sort(Comparator.comparing(CollektionItem::id));
             return Optional.of(oneWithGeneratedId);
         } else {
             return Optional.empty();
@@ -70,10 +73,38 @@ public class CollectionItemsResource {
                 .reduce(Boolean::logicalOr);
             if (allDeleted.isPresent() && allDeleted.get()) {
                 if (this.storage.getItems(collectionId).add(one)) {
+                    this.storage.getItems(collectionId).sort(Comparator.comparing(CollektionItem::id));
                     return Response.ok(one).build();
                 } else {
                     return Response.status(500).build();
                 }
+            } else {
+                return Response.status(404).build();
+            }
+        } else {
+            return Response.status(404).build();
+        }
+    }
+
+    @DELETE
+    @Path("{itemId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteOne(@PathParam String collectionId, @PathParam String itemId) {
+        Optional<Integer> index = Optional.empty();
+        var items = this.storage.getItems(collectionId);
+        for (var i = 0; i < items.size(); i++) {
+            var elt = items.get(i);
+            if (elt.id().equals(itemId)) {
+                index = Optional.of(i);
+                break;
+            }
+        }
+        if (!index.isEmpty()) {
+            var allDeleted = index.stream()
+                .map(i -> this.storage.getItems(collectionId).remove(i.intValue()))
+                .collect(Collectors.toList());
+            if (allDeleted.size() > 0) {
+                return Response.ok(allDeleted).build();
             } else {
                 return Response.status(404).build();
             }

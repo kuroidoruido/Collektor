@@ -37,6 +37,7 @@
         </ul>          
     </mat-card-content>
     <mat-card-actions [align]="'end'">
+        <a mat-button (click)="remove.emit(item)">Remove</a>
         <a mat-button [routerLink]="['/collection',collektion?.id,'item','edit',item.id]">Edit</a>
     </mat-card-actions>
 </mat-card>

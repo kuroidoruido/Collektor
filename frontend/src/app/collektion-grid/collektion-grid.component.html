@@ -1,6 +1,6 @@
 <ng-container *ngIf="collektions$ | async as collektions; else noCollections">
     <ng-container *ngFor="let collektion of collektions">
-        <app-collektion-tile [collektion]="collektion"></app-collektion-tile>
+        <app-collektion-tile [collektion]="collektion" (remove)="onRemoveClick($event)"></app-collektion-tile>
     </ng-container>
 </ng-container>
 <ng-template #noCollections>

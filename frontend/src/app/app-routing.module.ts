@@ -18,7 +18,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), NotFoundModule, CollektionGridModule, EditCollektionModule, ItemGridModule, EditItemModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    NotFoundModule,
+    CollektionGridModule,
+    EditCollektionModule,
+    ItemGridModule,
+    EditItemModule,
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

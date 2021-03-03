@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Collektion, CollektionItemField } from 'src/app/model/Collektion';
 
 import { CollektionItem } from 'src/app/model/CollektionItem';
@@ -11,6 +11,7 @@ import { CollektionItem } from 'src/app/model/CollektionItem';
 export class ItemTileComponent {
   @Input() collektion: Collektion | undefined;
   @Input() item: CollektionItem | undefined;
+  @Output() remove = new EventEmitter<CollektionItem>();
 
   private getCustomField<T>(customFields: CollektionItem['customFields'], def: CollektionItemField): T {
     return (customFields[def.key] as any) as T;

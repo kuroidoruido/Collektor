@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 
 import { BackendService } from 'src/app/backend/backend.service';
 import { Collektion } from 'src/app/model/Collektion';
 import { isUndefined } from '../shared/assert.utils';
+import { ConfirmRemoveCollektionDialog } from './confirm-remove-collektion.dialog';
 
 function collektionLabelComparator(a: Collektion, b: Collektion): number {
   return a.label.localeCompare(b.label);
@@ -22,7 +24,7 @@ export class CollektionGridComponent implements OnInit {
 
   collektions$ = new BehaviorSubject<Collektion[] | undefined>(undefined);
 
-  constructor(private backend: BackendService, private router: Router) {}
+  constructor(private backend: BackendService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.refreshCollektions();
@@ -38,5 +40,14 @@ export class CollektionGridComponent implements OnInit {
 
   goToAddPage(): void {
     this.router.navigate(['/collection/add']);
+  }
+
+  onRemoveClick(collektion: Collektion): void {
+    const dialogRef = this.dialog.open(ConfirmRemoveCollektionDialog, { data: { collektion } });
+    dialogRef.afterClosed().pipe(
+      mergeMap(() => this.backend.deleteCollektion(collektion.id)),
+    ).subscribe(collektionId => {
+      this.refreshCollektions();
+    });
   }
 }

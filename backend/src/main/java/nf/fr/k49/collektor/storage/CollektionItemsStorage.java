@@ -6,4 +6,5 @@ import nf.fr.k49.collektor.model.CollektionItem;
 
 public interface CollektionItemsStorage {
     public List<CollektionItem> getItems(String collectionId);
+    public boolean deleteStorage(String collectionId);
 }

@@ -19,6 +19,10 @@ export class BackendService {
     return this.http.get<Collektion>(`/api/collections/${collektionId}`);
   }
 
+  deleteCollektion(collektionId: string): Observable<void> {
+    return this.http.delete<void>(`/api/collections/${collektionId}`);
+  }
+
   createCollektion(newOne: Omit<Collektion, 'id'>): Observable<Collektion> {
     return this.http.post<Collektion>('/api/collections', newOne);
   }
@@ -30,8 +34,13 @@ export class BackendService {
   getCollektionItems(collektionId: string): Observable<CollektionItem[]> {
     return this.http.get<CollektionItem[]>(`/api/collections/${collektionId}/items`);
   }
+
   getCollektionItem(collektionId: string, itemId: string): Observable<CollektionItem> {
     return this.http.get<CollektionItem>(`/api/collections/${collektionId}/items/${itemId}`);
+  }
+
+  deleteCollektionItem(collektionId: string, itemId: string): Observable<void> {
+    return this.http.delete<void>(`/api/collections/${collektionId}/items/${itemId}`);
   }
   
   createCollektionItem(collektionId: string, newOne: Omit<CollektionItem, 'id'>): Observable<CollektionItem> {

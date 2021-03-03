@@ -60,7 +60,11 @@ export class ItemFormComponent implements OnChanges {
     const formValue = this.form.getRawValue();
     const newModel: CollektionItem = { ...emptyCollektionItem(), ...this.model };
     newModel.label = formValue.label;
-    newModel.photoUrls = [formValue.photoUrls];
+    if (isDefined(formValue.photoUrls) && formValue.photoUrls.length > 0) {
+      newModel.photoUrls = [formValue.photoUrls];
+    } else {
+      newModel.photoUrls = [];
+    }
     this.customFieldsArray.controls.forEach((control, index) => {
       newModel.customFields[control.key] = formValue.customFields[index];
     });

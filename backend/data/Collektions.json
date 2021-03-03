@@ -1,17 +1,5 @@
 [
   {
-    "id": "b255c89a-02be-4e44-8b9b-8b682c4fb477",
-    "label": "Gameboy Color games",
-    "imgUrl": "/api/imgs/0db2b0dd-ada2-499b-91bf-5193a814247f",
-    "customFields": [
-      {
-        "key": "game-id",
-        "label": "Game ID",
-        "type": "TEXT"
-      }
-    ]
-  },
-  {
     "id": "528a5530-2725-437d-bd3a-ae565b6a7e77",
     "label": "Consoles",
     "imgUrl": "/api/imgs/da6be3e3-6fa6-4c6a-b677-68a95c48d8e7",
@@ -30,28 +18,6 @@
         "key": "handheld",
         "label": "Handheld",
         "type": "BOOLEAN"
-      }
-    ]
-  },
-  {
-    "id": "af06bcae-95ed-4d2c-81a6-98815c983eb3",
-    "label": "Switch games",
-    "imgUrl": "/api/imgs/26ff6850-f076-48fb-8afc-78f092d8d3ba",
-    "customFields": [
-      {
-        "key": "game-id",
-        "label": "Game ID",
-        "type": "TEXT"
-      },
-      {
-        "key": "developer",
-        "label": "Developer",
-        "type": "TEXT"
-      },
-      {
-        "key": "released-on",
-        "label": "Released on",
-        "type": "TEXT"
       }
     ]
   },
@@ -84,6 +50,40 @@
         "key": "count",
         "label": "Count",
         "type": "INTEGER"
+      }
+    ]
+  },
+  {
+    "id": "af06bcae-95ed-4d2c-81a6-98815c983eb3",
+    "label": "Switch games",
+    "imgUrl": "/api/imgs/26ff6850-f076-48fb-8afc-78f092d8d3ba",
+    "customFields": [
+      {
+        "key": "game-id",
+        "label": "Game ID",
+        "type": "TEXT"
+      },
+      {
+        "key": "developer",
+        "label": "Developer",
+        "type": "TEXT"
+      },
+      {
+        "key": "released-on",
+        "label": "Released on",
+        "type": "TEXT"
+      }
+    ]
+  },
+  {
+    "id": "b255c89a-02be-4e44-8b9b-8b682c4fb477",
+    "label": "Gameboy Color games",
+    "imgUrl": "/api/imgs/0db2b0dd-ada2-499b-91bf-5193a814247f",
+    "customFields": [
+      {
+        "key": "game-id",
+        "label": "Game ID",
+        "type": "TEXT"
       }
     ]
   }

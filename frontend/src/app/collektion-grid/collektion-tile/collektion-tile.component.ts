@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Collektion } from 'src/app/model/Collektion';
 
 @Component({
@@ -8,4 +8,5 @@ import { Collektion } from 'src/app/model/Collektion';
 })
 export class CollektionTileComponent {
   @Input() collektion: Collektion | undefined;
+  @Output() remove = new EventEmitter<Collektion>();
 }
