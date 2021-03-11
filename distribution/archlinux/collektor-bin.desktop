@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Collektor
+Comment=A simple collection manager to keep tracking all your collections.
+GenericName=Colletion manager
+Exec=/usr/bin/collektor
+Icon=collektor
+Type=Application
+StartupNotify=true
+StartupWMClass=Collektor
+Categories=Office;
+MimeType=
+Keywords=collektor;collection;
