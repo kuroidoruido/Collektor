@@ -5,7 +5,7 @@
   "main": "src/app/main.js",
   "scripts": {
     "prepare-vendor": "npx shx mkdir -p ./vendor && npx shx rm -f ./vendor/*",
-    "copy-icon-to-vendor": "npx shx cp ../frontend/src/app/assets/collektor.png ./vendor/collektor.png",
+    "copy-icon-to-vendor": "npx shx cp ../frontend/src/assets/collektor.png ./vendor/collektor.png",
     "copy-jvm-to-vendor": "npx shx cp ../backend/target/collektor-*-runner.jar ./vendor/collektor-web.jar",
     "copy-jar-to-vendor": "npx shx cp -r ../backend/target/runtime-image ./vendor/jvm",
     "postinstall": "npm run prepare-vendor && npm run copy-icon-to-vendor && npm run copy-jvm-to-vendor && npm run copy-jar-to-vendor",

@@ -1,5 +1,6 @@
 node_modules
 vendor/*.jar
+vendor/*.png
 vendor/jvm/
 out/
 *.sha256
