@@ -1,8 +1,0 @@
-<input type="file" (change)="upload($event)" placeholder="Upload image" accept=".png,.jpg,.jpeg,.svg,.gif,.webm" hidden #imgInput>
-<ng-template [ngIf]="model" [ngIfElse]="noImage">
-    <img class="image-preview" [src]="model" [alt]="model" />
-    <button mat-button type="button" (click)="deleteImage()">Delete this image</button>
-</ng-template>
-<ng-template #noImage>
-    <button mat-button type="button" (click)="imgInput.click()">Select an image</button>
-</ng-template>

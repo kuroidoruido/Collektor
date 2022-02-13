@@ -1,6 +1,0 @@
-<ng-container *ngIf="collektion$ | async as collektion">
-    <ng-container *ngIf="item$ | async as item">
-        <h2>Edit item {{ collektion.label }} / {{ item.label }}</h2>
-        <app-item-form [collektion]="collektion" [model]="item" (save)="onSave($event)"></app-item-form>
-    </ng-container>
-</ng-container>

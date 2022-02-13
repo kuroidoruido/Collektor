@@ -1,4 +1,0 @@
-<ng-container *ngIf="collection$ | async as collektion">
-    <h2>Edit collection {{ collektion.label }}</h2>
-    <app-collektion-form [model]="collektion" (save)="onSave($event)"></app-collektion-form>
-</ng-container>
