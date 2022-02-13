@@ -11,4 +11,5 @@ A simple collection manager to keep tracking all your collections.
 ### Build with
 
 - [Aleph](https://alephjs.org)
+- [MaterializeCSS](https://materializecss.com/)
 - [React](https://reactjs.org/)
