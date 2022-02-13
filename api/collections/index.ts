@@ -5,7 +5,7 @@ export const handler: APIHandler = ({ response }) => {
   const collections: Collection[] = [
     {
       id: 'evercade',
-      label: 'Evercade',
+      label: 'Jeux Evercade',
       type: 'video-game',
       content: [
         {

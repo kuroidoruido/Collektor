@@ -2,6 +2,6 @@
     margin-bottom: 2rem;
 }
 
-.header-nav .brand-logo i {
-    margin-left: 15px;
+.header-nav .brand-logo {
+    padding-left: 15px;
 }
