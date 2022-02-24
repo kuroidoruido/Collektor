@@ -1,0 +1,58 @@
+[
+  {
+    "id": "evercade",
+    "label": "Jeux Evercade",
+    "type": "video-game",
+    "sort": "id",
+    "content": [
+      {
+        "id": "06",
+        "label": "Namco museum collection 2",
+        "editor": "Evercade",
+        "releaseDate": "2020-05-22",
+        "platform": "Evercade",
+        "description": "- Burning Force\n- Dig Dug 2\n- Dragon Spirit\n- Galaga\n- Pac-Attack\n- Phelios\n- Splatterhouse 2\n- Splatterhouse 3\n- Tower of Druaga\n- Warp man\n- Weapon Lord"
+      },
+      {
+        "id": "17",
+        "label": "Indie heroes collection 1",
+        "editor": "Evercade",
+        "releaseDate": "2021-07-30",
+        "platform": "Evercade",
+        "description": "- Doodle World\n- Twin Dragons\n- FoxyLand\n- Debtor\n- Alien Cat 2\n- Deadeus\n- Anguna\n- Super Homebrew War\n- FLEA\n- UCHUSEN\n- Ploid\n- KUBO 3\n- Quest Arrest\n- Chain Break"
+      },
+      {
+        "id": "18",
+        "label": "Worms collection 1",
+        "editor": "Evercade",
+        "releaseDate": "2021-07-30",
+        "platform": "Evercade",
+        "description": "- Worms\n- Worms Armageddon\n- Worms Blast"
+      }
+    ]
+  },
+  {
+    "id": "switch",
+    "label": "Jeux Switch",
+    "type": "video-game",
+    "sort": "label",
+    "content": [
+      {
+        "id": "LA-H-AS7TA-EUR",
+        "label": "51 Worldwide Games",
+        "editor": "Nintendo",
+        "releaseDate": "2020-06-05",
+        "platform": "Switch",
+        "description": ""
+      },
+      {
+        "id": "LA-H-AZQLA-EUR",
+        "label": "Balan Wonderworld",
+        "editor": "Square Enix",
+        "releaseDate": "2021-03-26",
+        "platform": "Switch",
+        "description": ""
+      }
+    ]
+  }
+]
